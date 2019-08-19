@@ -32,7 +32,8 @@ class ContactCard extends LitElement {
 	render() {
 		return html`
 			<div class='card card-1'>
-				${this.data.name}
+				<div class='name'>${this.data.name} (${this.data.username})</div>
+				<div class='email'>${this.data.email}</div>
 			</div>
 		`
 	}
