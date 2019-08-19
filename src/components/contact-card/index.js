@@ -20,6 +20,10 @@ class ContactCard extends LitElement {
 		super.connectedCallback()
 
 		console.log(this.data)
+
+		setTimeout(() => {
+			this.shadowRoot.querySelector('.info').setAttribute('show', '')
+		}, 3000)
 	}
 
 	/**
@@ -31,11 +35,22 @@ class ContactCard extends LitElement {
 	 */
 	render() {
 		return html`
+		${this.icons()}
+
 			<div class='card card-1'>
-				<div class='name'>${this.data.name} (${this.data.username})</div>
-				<div class='email'>${this.data.email}</div>
+				<div class='name' title='${this.data.username}'><i class="material-icons">account_circle</i> ${this.data.name}</div>
+				<div class='info'>
+					<div class='phone'>phone: ${this.data.phone}</div>
+					<div class='username'>username: ${this.data.username}</div>
+					<div class='website'>website: ${this.data.website}</div>
+				</div>
+				<div class='email'><i class="material-icons">mail</i> ${this.data.email}</div>
 			</div>
 		`
+	}
+
+	icons() {
+		return html`<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 	}
 }
 

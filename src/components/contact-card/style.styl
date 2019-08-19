@@ -2,36 +2,43 @@
 
 	.card
 		background #fff
-		border-radius 2px
 		height auto
 		margin 0.5rem
 		padding 0.5rem
 		position relative
 		width 300px
 		border-radius 12px
+		box-shadow 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0,0,0,.12)
+		border-radius 4px
 
 		.name
 			font-size 15px
+			display grid
+			grid-template-areas 'name username'
+			grid-template-columns 32px auto
+			grid-template-rows 32px
+			align-items center
+
+		.info
+			max-height 0
+			overflow hidden
+			transition max-height 600ms ease
+			will-change max-heigth
+
+			&[show]
+				max-height 300px
 
 		.email
 			font-family 'Roboto', 'Arial', 'Helvetica', sans-serif
 			font-size 13px
+			display grid
+			grid-template-areas 'icon email'
+			grid-template-columns 32px auto
+			align-items center
 
-	.card-1
-		box-shadow 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
-		transition all 0.3s cubic-bezier(.25,.8,.25,1)
-
-	.card-1:hover
-		box-shadow 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
-
-	.card-2
-		box-shadow 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
-
-	.card-3
-		box-shadow 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
-
-	.card-4
-		box-shadow 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
-
-	.card-5
-		box-shadow 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)
+	/**
+	 * Media Queries
+	 */
+	@media only screen and (max-width: 425px)
+		.card
+			width 80vw
