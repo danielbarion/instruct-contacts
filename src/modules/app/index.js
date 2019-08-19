@@ -4,7 +4,8 @@ import fetcher from 'utils/api/index.js'
 
 class App extends LitElement {
 	static get properties() {	return {
-		active: { type: Boolean }
+		active: { type: Boolean },
+		contacts: {	type: Array	}
 	}}
 
 	static get styles() {
@@ -15,6 +16,7 @@ class App extends LitElement {
 		super()
 
 		this.active = false
+		this.contacts = []
 	}
 
 	connectedCallback() {
@@ -29,6 +31,7 @@ class App extends LitElement {
 		fetcher({ url: 'http://jsonplaceholder.typicode.com/users' })
 		.then(response => {
 			console.log(response)
+			this.contacts = response
 		})
 
 	}
@@ -44,7 +47,7 @@ class App extends LitElement {
 
 	appRoot() {
 		return html`
-			<div> Hello World </div>
+			<div>${JSON.stringify(this.contacts)}</div>
 		`
 	}
 }

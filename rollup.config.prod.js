@@ -26,10 +26,11 @@ export default [
     plugins: [
       progress(),
       alias({
+        resolve: ['.styl', '.css'],
         modules: `${__dirname}/src/modules`,
         components: `${__dirname}/src/components`,
         utils: `${__dirname}/src/utils`,
-        assets: `${__dirname}/src/assets`,
+        assets: `${__dirname}/assets`,
       }),
       html({
         input: 'index.html',
