@@ -30,6 +30,16 @@ class ContactCard extends LitElement {
 	 * funcs
 	 */
 
+	clickHandler() {
+		const infoElement = this.shadowRoot.querySelector('.info')
+
+		if (infoElement.hasAttribute('show')) {
+			infoElement.removeAttribute('show')
+		} else {
+			infoElement.setAttribute('show', '')
+		}
+	}
+
 	/**
 	 * HTML
 	 */
@@ -37,7 +47,7 @@ class ContactCard extends LitElement {
 		return html`
 		${this.icons()}
 
-			<div class='card card-1'>
+			<div class='card card-1' @click=${this.clickHandler}>
 				<div class='name' title='${this.data.username}'><i class="material-icons">account_circle</i> ${this.data.name}</div>
 				<div class='info'>
 					<div class='phone'>phone: ${this.data.phone}</div>
