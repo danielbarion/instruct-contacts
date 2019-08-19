@@ -6,7 +6,7 @@ import './base.styl'
 /**
  * Components
  */
-// import './components/toast'
+import './components/toast'
 
 /**
  * Modules
