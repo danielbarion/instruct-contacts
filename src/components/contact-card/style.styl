@@ -25,12 +25,35 @@
 			opacity 0
 			transition opacity 300ms ease, visibility 300ms ease, max-height 400ms ease
 			will-change max-height
+			font-size 13px
+			font-family 'Roboto', 'Arial', 'Helvetica', sans-serif
 
 			&[show]
 				max-height 300px
 				opacity 1
 				visibility visible
 				transition opacity 300ms ease, visibility 300ms ease, max-height 900ms ease
+
+			.phone
+				display grid
+				grid-template-areas 'icon email'
+				grid-template-columns 32px auto
+				grid-template-rows 32px
+				align-items center
+
+			.website
+				display grid
+				grid-template-areas 'icon email'
+				grid-template-columns 32px auto
+				grid-template-rows 32px
+				align-items center
+
+			.username
+				display grid
+				grid-template-areas 'icon email'
+				grid-template-columns 32px auto
+				grid-template-rows 32px
+				align-items center
 
 		.email
 			font-family 'Roboto', 'Arial', 'Helvetica', sans-serif

@@ -50,9 +50,9 @@ class ContactCard extends LitElement {
 			<div class='card card-1' @click=${this.clickHandler}>
 				<div class='name' title='${this.data.username}'><i class="material-icons">account_circle</i> ${this.data.name}</div>
 				<div class='info'>
-					<div class='phone'>phone: ${this.data.phone}</div>
-					<div class='username'>username: ${this.data.username}</div>
-					<div class='website'>website: ${this.data.website}</div>
+					<div class='phone'><i class="material-icons">local_phone</i> ${this.data.phone}</div>
+					<div class='username'><i class="material-icons">sentiment_satisfied</i> ${this.data.username}</div>
+					<div class='website'><i class="material-icons">public</i> ${this.data.website}</div>
 				</div>
 				<div class='email'><i class="material-icons">mail</i> ${this.data.email}</div>
 			</div>
