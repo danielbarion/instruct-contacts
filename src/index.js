@@ -11,4 +11,4 @@ import './base.styl'
 /**
  * Modules
  */
-// import './components/app'
+import './modules/app'
