@@ -1,18 +1,19 @@
-import analyze from 'rollup-plugin-analyzer';
-import babel from 'rollup-plugin-babel';
-import copy from 'rollup-plugin-copy';
-import filesize from 'rollup-plugin-filesize';
-import html from 'rollup-plugin-html-scaffold';
-import resolve from 'rollup-plugin-node-resolve';
+import analyze from 'rollup-plugin-analyzer'
+import babel from 'rollup-plugin-babel'
+import copy from 'rollup-plugin-copy'
+import filesize from 'rollup-plugin-filesize'
+import html from 'rollup-plugin-html-scaffold'
+import resolve from 'rollup-plugin-node-resolve'
 import stylus from 'rollup-plugin-stylus-to-css'
-import postcss from 'rollup-plugin-postcss';
-import progress from 'rollup-plugin-progress';
-import replace from 'rollup-plugin-replace';
-import { string } from 'rollup-plugin-string';
-import { version } from './package.json';
-import { terser } from 'rollup-plugin-terser';
+import postcss from 'rollup-plugin-postcss'
+import progress from 'rollup-plugin-progress'
+import replace from 'rollup-plugin-replace'
+import alias from 'rollup-plugin-alias'
+import { string } from 'rollup-plugin-string'
+import { version } from './package.json'
+import { terser } from 'rollup-plugin-terser'
 
-const appBundle = `app-${new Date().getTime()}.js`;
+const appBundle = `app-${new Date().getTime()}.js`
 
 export default [
   {
@@ -20,10 +21,16 @@ export default [
     output: {
       file: `build/${appBundle}`,
       format: 'umd',
-      sourcemap: false
+      sourcemap: false,
     },
     plugins: [
       progress(),
+      alias({
+        modules: `${__dirname}/src/modules`,
+        components: `${__dirname}/src/components`,
+        utils: `${__dirname}/src/utils`,
+        assets: `${__dirname}/src/assets`,
+      }),
       html({
         input: 'index.html',
         output: 'index.html',
@@ -54,4 +61,4 @@ export default [
       }),
     ],
   }
-];
+]
