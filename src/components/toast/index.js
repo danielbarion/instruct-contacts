@@ -1,4 +1,4 @@
-import { LitElement, html, css, unsafeCSS, customElement } from 'lit-element'
+import { LitElement, html, css, unsafeCSS } from 'lit-element'
 import style from './style.styl'
 
 class Toast extends LitElement {
@@ -32,16 +32,16 @@ class Toast extends LitElement {
 
 		this.classList.add(`toast-${this.positionX}`)
 		this.classList.add(`toast-${this.positionY}`)
-
-		this.initializeTimeout()
 	}
 
 	/**
 	 * funcs
 	 */
 	toggle(show) {
+		console.log({show})
 		if (show) {
 			this.setAttribute('active', '')
+			this.initializeTimeout()
 		} else {
 			this.removeAttribute('active')
 		}
@@ -50,7 +50,7 @@ class Toast extends LitElement {
 	initializeTimeout() {
 		if (this.timeout !== 0) {
 			setTimeout(() => {
-				this.toggle(!this.active)
+				this.toggle(false)
 			}, this.timeout)
 		}
 	}

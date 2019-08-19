@@ -47,7 +47,9 @@ class App extends LitElement {
 
 	appRoot() {
 		return html`
-			<div>${JSON.stringify(this.contacts)}</div>
+			<div class='card-list'>
+			${this.contacts.map(item => html`<wc-contact-card data=${JSON.stringify(item)}></wc-contact-card>`)}
+			</div>
 		`
 	}
 }
