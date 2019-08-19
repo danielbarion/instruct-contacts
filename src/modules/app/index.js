@@ -1,5 +1,6 @@
 import { LitElement, html, css, unsafeCSS } from 'lit-element'
 import style from './style.styl'
+import fetcher from 'utils/api/index.js'
 
 class App extends LitElement {
 	static get properties() {	return {
@@ -18,11 +19,19 @@ class App extends LitElement {
 
 	connectedCallback() {
 		super.connectedCallback()
+		this.getContacts()
 	}
 
 	/**
 	 * funcs
 	 */
+	getContacts() {
+		fetcher({ url: 'http://jsonplaceholder.typicode.com/users' })
+		.then(response => {
+			console.log(response)
+		})
+
+	}
 
 	/**
 	 * HTML
