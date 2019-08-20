@@ -48,13 +48,32 @@ class ContactCard extends LitElement {
 		${this.icons()}
 
 			<div class='card card-1' @click=${this.clickHandler}>
-				<div class='name' title='${this.data.username}'><i class="material-icons">account_circle</i> ${this.data.name}</div>
-				<div class='info'>
-					<div class='phone'><i class="material-icons">local_phone</i> ${this.data.phone}</div>
-					<div class='username'><i class="material-icons">sentiment_satisfied</i> ${this.data.username}</div>
-					<div class='website'><i class="material-icons">public</i> ${this.data.website}</div>
+				<div class='name' title='${this.data.username}'>
+					<i class="material-icons">account_circle</i>
+					<span>${this.data.name}</span>
 				</div>
-				<div class='email'><i class="material-icons">mail</i> ${this.data.email}</div>
+				<div class='info'>
+					<div class='phone'>
+						<i class="material-icons">local_phone</i>
+						<span>${this.data.phone}</span>
+					</div>
+					<div class='username'>
+						<i class="material-icons">sentiment_satisfied</i>
+						<span>${this.data.username}</span>
+					</div>
+					<div class='website'>
+						<i class="material-icons">public</i>
+						<span>${this.data.website}</span>
+					</div>
+					<div class='adress'>
+						<i class="material-icons">location_on</i>
+						<span>${this.data.address.street} - ${this.data.address.city}</span>
+					</div>
+				</div>
+				<div class='email'>
+					<i class="material-icons">mail</i>
+					<span>${this.data.email}</span>
+				</div>
 			</div>
 		`
 	}
