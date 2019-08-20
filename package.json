@@ -33,6 +33,7 @@
     "rollup-plugin-string": "^3.0.0",
     "rollup-plugin-stylus-compiler": "^1.0.1",
     "rollup-plugin-stylus-to-css": "^1.1.0",
+    "rollup-plugin-svg": "^2.0.0",
     "rollup-plugin-terser": "^5.1.1",
     "rollup-plugin-uglify": "^6.0.2"
   },
