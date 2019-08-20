@@ -3,11 +3,7 @@ import style from './style.styl'
 
 class Filter extends LitElement {
 	static get properties() {	return {
-		text: { type: String },
 		active: { type: Boolean },
-		positionX: { type: String },
-		positionY: { type: String },
-		timeout: { type: Number }
 	}}
 
 	static get styles() {
@@ -29,14 +25,18 @@ class Filter extends LitElement {
 	/**
 	 * funcs
 	 */
-	toggle(show) {
-		console.log({show})
-		if (show) {
+	toggle() {
+		this.active = !this.active
+
+		if (this.active) {
 			this.setAttribute('active', '')
-			this.initializeTimeout()
 		} else {
 			this.removeAttribute('active')
 		}
+	}
+
+	handleClickOverlay() {
+		this.toggle()
 	}
 
 	/**
@@ -52,7 +52,7 @@ class Filter extends LitElement {
 	}
 
 	overlay() {
-		return html`<div class='overlay'></div>`
+		return html`<div class='overlay' @click=${this.handleClickOverlay}></div>`
 	}
 }
 
