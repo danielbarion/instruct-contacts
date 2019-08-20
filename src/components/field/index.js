@@ -51,7 +51,6 @@ class Field extends LitElement {
 		if (this.value) {
 			input.setAttribute('hasvalue', '')
 		} else {
-			console.log('hye')
 			input.removeAttribute('hasvalue')
 		}
 	}
