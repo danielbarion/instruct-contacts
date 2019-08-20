@@ -29,8 +29,13 @@ class ContactCard extends LitElement {
 	/**
 	 * funcs
 	 */
+	switchCard(event) {
+		const [finalElement] = event.path
 
-	clickHandler() {
+		if (finalElement && finalElement.classList.contains('map')) {
+			return
+		}
+
 		const infoElement = this.shadowRoot.querySelector('.info')
 
 		if (infoElement.hasAttribute('show')) {
@@ -40,6 +45,10 @@ class ContactCard extends LitElement {
 		}
 	}
 
+	openInMaps(address) {
+		window.open(`https://maps.google.com/maps?q=${address.geo.lat},${address.geo.lng}`)
+	}
+
 	/**
 	 * HTML
 	 */
@@ -47,7 +56,7 @@ class ContactCard extends LitElement {
 		return html`
 		${this.icons()}
 
-			<div class='card card-1' @click=${this.clickHandler}>
+			<div class='card card-1' @click=${this.switchCard}>
 				<div class='name' title='${this.data.username}'>
 					<i class="material-icons">account_circle</i>
 					<span>${this.data.name}</span>
@@ -66,7 +75,7 @@ class ContactCard extends LitElement {
 						<span>${this.data.website}</span>
 					</div>
 					<div class='adress'>
-						<i class="material-icons">location_on</i>
+						<i class="material-icons map" @click=${this.openInMaps.bind(this, this.data.address)}>location_on</i>
 						<span>${this.data.address.street} - ${this.data.address.city}</span>
 					</div>
 				</div>
