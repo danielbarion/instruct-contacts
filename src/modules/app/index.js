@@ -63,6 +63,12 @@ class App extends LitElement {
 		}
 	}
 
+	/**
+	 * If the data input is an array, the output will be an array
+	 * If the data input is an object, the output will be a boolean
+	 * @param {Array | Object} data
+	 * @param {String} value
+	 */
 	recursiveFilter(data, value) {
 		if (value && data.length && data.length > 0) {
 			const keys = data.reduce((acc, item) => {
