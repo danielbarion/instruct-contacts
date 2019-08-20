@@ -23,20 +23,37 @@ class Field extends LitElement {
 		this.name = ''
 		this.label = ''
 		this.type = 'text'
-		this.value = ''
+		this.value = 'asd'
 		this.active = false
 		this.disableAutoComplete = false
 	}
 
 	connectedCallback() {
 		super.connectedCallback()
+
+		setTimeout(() => this.handleChange())
 	}
 
 	/**
 	 * funcs
 	 */
-	handleChange(event) {
-		console.log(event)
+	handleInputValue(event) {
+		if (event.inputType === 'insertText') {
+			this.value += event.data
+		} else if (event.inputType === 'deleteContentBackward') {
+			this.value = this.value.slice(0, this.value.length - 1)
+		}
+	}
+
+	handleChange() {
+		const input = this.shadowRoot.querySelector('input')
+
+		if (this.value) {
+			input.setAttribute('hasvalue', '')
+		} else {
+			console.log('hye')
+			input.removeAttribute('hasvalue')
+		}
 	}
 
 	/**
@@ -45,7 +62,7 @@ class Field extends LitElement {
 	render() {
 		return html`
 			<div class='root'>
-				<input type=${this.type} name=${this.name} id=${this.id ? this.id : this.name} @change=${this.handleChange} autocomplete=${this.disableAutoComplete ? 'off' : ''}></input>
+				<input type=${this.type} name=${this.name} id=${this.id ? this.id : this.name} value=${this.value} @input=${this.handleInputValue} @change=${this.handleChange} autocomplete=${this.disableAutoComplete ? 'off' : ''}></input>
 				<label for=${this.id ? this.id : this.name}>${this.label}</label>
 			</div>
 		`
