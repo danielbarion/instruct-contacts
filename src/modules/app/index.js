@@ -28,7 +28,7 @@ class App extends LitElement {
 	 * funcs
 	 */
 	getContacts() {
-		fetcher({ url: 'http://jsonplaceholder.typicode.com/users' })
+		fetcher({ url: 'https://jsonplaceholder.typicode.com/users' })
 		.then(response => {
 			console.log(response)
 			this.contacts = response
