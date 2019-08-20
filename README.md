@@ -4,6 +4,19 @@ Demo: [https://friendly-bose-005e60.netlify.com/](https://friendly-bose-005e60.n
 Recommended OS: `Linux`, `OS X`.
 You can test this app in `Windows` but you need install linux sub system to improve compatility.
 
+### Informations
+This project use [web components](https://developer.mozilla.org/pt-BR/docs/Web/Web_Components) concept to have a high performance like native elements.
+All components are build with `HTML`, `CSS` (Stylus), `Javascript`.
+
+Behind the scenes we have a open source project [Lit-Element](https://lit-element.polymer-project.org/) that I'm contributing to the documentation.
+
+* Components
+> All components has a `wc` prefix
+
+* Modules
+> All modules has a `instruct` prefix
+
+
 ### Available Scripts
 #### Development
 ```bash
