@@ -57,7 +57,6 @@ class App extends LitElement {
 
 			filteredContacts = this.recursiveFilter(this.untouchedContacts, value)
 
-			console.log({ filteredContacts })
 			this.contacts = filteredContacts
 		} else {
 			this.contacts = JSON.parse(JSON.stringify(this.untouchedContacts))
@@ -65,32 +64,50 @@ class App extends LitElement {
 	}
 
 	recursiveFilter(data, value) {
-		const keys = data.reduce((acc, item) => {
-			const keys = Object.keys(item)
-			if (keys.length > 0) {
+		if (value && data.length && data.length > 0) {
+			const keys = data.reduce((acc, item) => {
+				const keys = Object.keys(item)
+				if (keys.length > 0) {
+					keys.forEach(key => {
+						if (acc.indexOf(key) === -1) {
+							acc.push(key)
+						}
+					})
+				}
+
+				return acc
+			}, [])
+
+			return data.reduce((acc, item) => {
 				keys.forEach(key => {
-					if (acc.indexOf(key) === -1) {
-						acc.push(key)
+					if (typeof item[key] == 'string') {
+						if (item[key] == value || item[key].includes(value)) {
+							acc.push(item)
+						}
+					} else if (typeof item[key] == 'object') {
+						if (this.recursiveFilter(item[key], value)) {
+							acc.push(item)
+						}
 					}
 				})
-			}
 
-			return acc
-		}, [])
+				return acc.filter((data, index, self) => self.indexOf(data) >= index)
+			}, [])
+		} else if (value && !data.length) {
+			const keys = Object.keys(data)
 
-		return data.reduce((acc, item) => {
-			keys.forEach(key => {
-				if (typeof item[key] == 'string') {
-					if (item[key] == value || item[key].includes(value)) {
-						acc.push(item)
+			return keys.reduce((acc, key) => {
+				if (typeof data[key] == 'string') {
+					if (data[key] == value || data[key].includes(value)) {
+						acc = true
 					}
-				} else if (typeof item[key] == 'array') {
-					this.recursiveFilter(item[key], value)
 				}
-			})
 
-			return acc.filter((data, index, self) => self.indexOf(data) >= index)
-		}, [])
+				return acc
+			}, false)
+		}
+
+		return []
 	}
 
 	/**
