@@ -1,0 +1,37 @@
+:host
+	.root
+		position relative
+
+		& input
+			transition 200ms ease
+			border-top none
+			border-right none
+			border-left none
+			border-bottom 2px #0080B6 solid
+			background-color transparent
+			outline none
+			color white
+			font-size 15px
+			opacity 1
+			width 100%
+
+			&:focus
+				opacity 1
+				border-bottom 2px #01A4E0 solid
+
+				+ label
+					bottom 30px
+					color #01A4E0
+
+			// &[hasvalue=true] + label
+			// 	bottom 30px
+
+		& label
+			color #0080B6
+			font-size 13px
+			font-weight 500
+			letter-spacing 0.5px
+			position absolute
+			bottom 7.5px
+			left 0
+			transition 200ms ease
