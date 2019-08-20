@@ -4,7 +4,7 @@ import style from './style.styl'
 class Filter extends LitElement {
 	static get properties() {	return {
 		active: { type: Boolean },
-		data: { type: Array }
+		onFilter: { type: Object },
 	}}
 
 	static get styles() {
@@ -15,17 +15,16 @@ class Filter extends LitElement {
 		super()
 
 		this.active = false
-		this.data = []
+		this.onFilter = null
+
+		this.handleSearch = this.handleSearch.bind(this)
 	}
 
 	connectedCallback() {
 		super.connectedCallback()
 
-		document.addEventListener('toggleFilter', this.toggle.bind(this))
-
+		this.initializeEvents()
 		this.toggle = this.toggle.bind(this)
-
-		console.log(123, this.data)
 	}
 
 	disconnectedCallback() {
@@ -37,6 +36,10 @@ class Filter extends LitElement {
 	/**
 	 * funcs
 	 */
+	initializeEvents() {
+		document.addEventListener('toggleFilter', this.toggle.bind(this))
+	}
+
 	toggle() {
 		this.active = !this.active
 
@@ -54,7 +57,10 @@ class Filter extends LitElement {
 	handleSearch(event) {
 		const [input] = event.path
 		const { value } = input
-		console.log(value)
+
+		if (this.onFilter) {
+			this.onFilter(value)
+		}
 	}
 
 	/**
