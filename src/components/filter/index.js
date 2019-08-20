@@ -47,8 +47,10 @@ class Filter extends LitElement {
 		this.toggle()
 	}
 
-	handleSearch() {
-		console.log('hye')
+	handleSearch(event) {
+		const [input] = event.path
+		const { value } = input
+		console.log(value)
 	}
 
 	/**
