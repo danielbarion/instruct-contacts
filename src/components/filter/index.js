@@ -14,14 +14,20 @@ class Filter extends LitElement {
 		super()
 
 		this.active = false
-
-		document.addEventListener('toggleFilter', this.toggle.bind(this))
 	}
 
 	connectedCallback() {
 		super.connectedCallback()
 
+		document.addEventListener('toggleFilter', this.toggle.bind(this))
+
 		this.toggle = this.toggle.bind(this)
+	}
+
+	disconnectedCallback() {
+		document.removeEventListener('toggleFilter')
+
+		super.disconnectedCallback()
 	}
 
 	/**
