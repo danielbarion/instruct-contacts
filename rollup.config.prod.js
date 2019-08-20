@@ -9,7 +9,6 @@ import postcss from 'rollup-plugin-postcss'
 import progress from 'rollup-plugin-progress'
 import replace from 'rollup-plugin-replace'
 import alias from 'rollup-plugin-alias'
-import svg from 'rollup-plugin-svg'
 import { string } from 'rollup-plugin-string'
 import { version } from './package.json'
 import { terser } from 'rollup-plugin-terser'
@@ -33,7 +32,6 @@ export default [
         utils: `${__dirname}/src/utils`,
         assets: `${__dirname}/assets`,
       }),
-      svg(),
       html({
         input: 'index.html',
         output: 'index.html',
