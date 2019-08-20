@@ -16,16 +16,6 @@ class ContactCard extends LitElement {
 		this.data = {}
 	}
 
-	connectedCallback() {
-		super.connectedCallback()
-
-		console.log(this.data)
-
-		setTimeout(() => {
-			this.shadowRoot.querySelector('.info').setAttribute('show', '')
-		}, 3000)
-	}
-
 	/**
 	 * funcs
 	 */
