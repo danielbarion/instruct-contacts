@@ -37,6 +37,8 @@ class TopBar extends LitElement {
 		setTimeout(() => {
 			icon.classList.remove('animationPulse')
 		}, 600)
+
+		document.dispatchEvent(new CustomEvent('toggleFilter'))
 	}
 
 	/**
