@@ -1,4 +1,8 @@
 ## Instruct Contacts APP
+Demo: [https://friendly-bose-005e60.netlify.com/](https://friendly-bose-005e60.netlify.com/)
+
+Recommended OS: `Linux`, `OS X`.
+You can test this app in `Windows` but you need install linux sub system to improve compatility.
 
 ### Available Scripts
 #### Development
