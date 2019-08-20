@@ -1,7 +1,13 @@
 :host
 	font-family 'Montserrat', 'Arial', 'Helvetica', sans-serif
+	display grid
+	grid-template-areas 'topbar'\
+											'cards'
+	grid-template-rows 64px auto
+	grid-template-columns auto
 
 	.card-list
+		grid-area cards
 		display flex
 		flex-wrap wrap
 		justify-content center
