@@ -5,7 +5,7 @@ import fetcher from 'utils/api/index.js'
 class App extends LitElement {
 	static get properties() {	return {
 		active: { type: Boolean },
-		contacts: {	type: Array	}
+		contacts: {	type: Array, reflected: true	}
 	}}
 
 	static get styles() {
@@ -33,7 +33,6 @@ class App extends LitElement {
 			console.log(response)
 			this.contacts = response
 		})
-
 	}
 
 	/**
@@ -48,7 +47,7 @@ class App extends LitElement {
 	appRoot() {
 		return html`
 			<wc-top-bar></wc-top-bar>
-			<wc-filter></wc-filter>
+			<wc-filter .data=${this.contacts}></wc-filter>
 			<div class='card-list'>
 			${this.contacts.map(item =>
 				html`<wc-contact-card data=${JSON.stringify(item)}></wc-contact-card>`)

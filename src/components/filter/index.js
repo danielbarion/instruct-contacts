@@ -4,6 +4,7 @@ import style from './style.styl'
 class Filter extends LitElement {
 	static get properties() {	return {
 		active: { type: Boolean },
+		data: { type: Array }
 	}}
 
 	static get styles() {
@@ -14,6 +15,7 @@ class Filter extends LitElement {
 		super()
 
 		this.active = false
+		this.data = []
 	}
 
 	connectedCallback() {
@@ -22,6 +24,8 @@ class Filter extends LitElement {
 		document.addEventListener('toggleFilter', this.toggle.bind(this))
 
 		this.toggle = this.toggle.bind(this)
+
+		console.log(123, this.data)
 	}
 
 	disconnectedCallback() {
