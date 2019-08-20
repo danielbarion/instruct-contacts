@@ -25,12 +25,11 @@ class App extends LitElement {
 		 * a good practice add a debounce function to prevent
 		 * unnecessary resource consumption
 		 */
-		this.debouncedFilter = debounce(this.filter, 500)
+		this.debouncedFilter = debounce(this.handleFilter, 500)
 	}
 
 	connectedCallback() {
 		super.connectedCallback()
-		this.initializeEvents()
 		this.getContacts()
 	}
 
@@ -42,9 +41,6 @@ class App extends LitElement {
 	/**
 	 * funcs
 	 */
-	initializeEvents() {
-		document.addEventListener('filterContacts', this.handleFilter)
-	}
 
 	getContacts() {
 		fetcher({ url: 'https://jsonplaceholder.typicode.com/users' })
@@ -55,11 +51,7 @@ class App extends LitElement {
 		})
 	}
 
-	handleFilter(event) {
-		console.log('filter: ', event)
-	}
-
-	filter(value) {
+	handleFilter(value) {
 		if (value) {
 			let filteredContacts = []
 
