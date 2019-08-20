@@ -23,7 +23,7 @@ class Field extends LitElement {
 		this.name = ''
 		this.label = ''
 		this.type = 'text'
-		this.value = 'asd'
+		this.value = ''
 		this.active = false
 		this.disableAutoComplete = false
 	}
@@ -61,7 +61,15 @@ class Field extends LitElement {
 	render() {
 		return html`
 			<div class='root'>
-				<input type=${this.type} name=${this.name} id=${this.id ? this.id : this.name} value=${this.value} @input=${this.handleInputValue} @change=${this.handleChange} autocomplete=${this.disableAutoComplete ? 'off' : ''}></input>
+				<input
+					id=${this.id ? this.id : this.name}
+					name=${this.name}
+					type=${this.type}
+					value=${this.value}
+					autocomplete=${this.disableAutoComplete ? 'off' : ''}
+					@input=${this.handleInputValue}
+					@change=${this.handleChange}
+				/>
 				<label for=${this.id ? this.id : this.name}>${this.label}</label>
 			</div>
 		`
