@@ -9,7 +9,8 @@ class Field extends LitElement {
 		type: { type: String },
 		value: { type: String },
 		active: { type: Boolean },
-		disableAutoComplete: { type: Boolean }
+		disableAutoComplete: { type: Boolean },
+		onInput: { type: Object }
 	}}
 
 	static get styles() {
@@ -26,6 +27,7 @@ class Field extends LitElement {
 		this.value = ''
 		this.active = false
 		this.disableAutoComplete = false
+		this.onInput = null
 	}
 
 	connectedCallback() {
@@ -49,6 +51,12 @@ class Field extends LitElement {
 		this.value = input.value
 	}
 
+	handleInput() {
+		if (this.onInput !== null) {
+			this.onInput()
+		}
+	}
+
 	/**
 	 * HTML
 	 */
@@ -62,6 +70,7 @@ class Field extends LitElement {
 					value=${this.value}
 					autocomplete=${this.disableAutoComplete ? 'off' : ''}
 					@change=${this.handleChange}
+					@input=${this.handleInput}
 				/>
 				<label for=${this.id ? this.id : this.name}>${this.label}</label>
 			</div>

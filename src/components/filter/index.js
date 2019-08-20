@@ -47,13 +47,17 @@ class Filter extends LitElement {
 		this.toggle()
 	}
 
+	handleSearch() {
+		console.log('hye')
+	}
+
 	/**
 	 * HTML
 	 */
 	render() {
 		return html`
 			<div class='root'>
-				<wc-field name='search' label='Search' disableautocomplete></ wc-field>
+				<wc-field name='search' label='Search' disableautocomplete .oninput=${this.handleSearch}></ wc-field>
 			</div>
 			${this.overlay()}
 		`
