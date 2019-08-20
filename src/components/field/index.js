@@ -37,22 +37,16 @@ class Field extends LitElement {
 	/**
 	 * funcs
 	 */
-	handleInputValue(event) {
-		if (event.inputType === 'insertText') {
-			this.value += event.data
-		} else if (event.inputType === 'deleteContentBackward') {
-			this.value = this.value.slice(0, this.value.length - 1)
-		}
-	}
-
 	handleChange() {
 		const input = this.shadowRoot.querySelector('input')
 
-		if (this.value) {
+		if (input.value) {
 			input.setAttribute('hasvalue', '')
 		} else {
 			input.removeAttribute('hasvalue')
 		}
+
+		this.value = input.value
 	}
 
 	/**
@@ -67,7 +61,6 @@ class Field extends LitElement {
 					type=${this.type}
 					value=${this.value}
 					autocomplete=${this.disableAutoComplete ? 'off' : ''}
-					@input=${this.handleInputValue}
 					@change=${this.handleChange}
 				/>
 				<label for=${this.id ? this.id : this.name}>${this.label}</label>
