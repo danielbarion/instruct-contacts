@@ -52,7 +52,7 @@ class Field extends LitElement {
 	}
 
 	handleInput() {
-		if (this.onInput !== null) {
+		if (this.onInput) {
 			this.onInput()
 		}
 	}
