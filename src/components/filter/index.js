@@ -126,33 +126,63 @@ class Filter extends LitElement {
 	 */
 	render() {
 		return html`
-			<div class='root'>
-				<div class='search'>
-					<wc-field name='search' label='Search' disableautocomplete .oninput=${this.handleSearch}></ wc-field>
-				</div>
-				<div class='content'>
-					${
-						this.radioGroupParams.map(radio => html`
-							<div class='radio'>
-								<wc-radio
-									id=${radio.id}
-									name=${radio.name}
-									label=${radio.label}
-									?checked=${radio.checked}
-									.click=${this.handleClickRadioGroupParams.bind(this)}
-								>
-								</ wc-radio>
-							</div>
-						`)
-					}
-				</div>
-			</div>
+			${this.icons()}
+			${this.main()}
 			${this.overlay()}
+		`
+	}
+
+	main() {
+		return html`
+			<div class='root'>
+				${this.search()}
+				${this.content()}
+				${this.closeIcon()}
+			</div>
+		`
+	}
+
+	search() {
+		return html`
+			<div class='search'>
+				<wc-field name='search' label='Search' disableautocomplete .oninput=${this.handleSearch}></ wc-field>
+			</div>
+		`
+	}
+
+	content() {
+		return html`
+			<div class='content'>
+				${this.radioGroupParams.map(radio => html`
+					<div class='radio'>
+						<wc-radio
+							id=${radio.id}
+							name=${radio.name}
+							label=${radio.label}
+							?checked=${radio.checked}
+							.click=${this.handleClickRadioGroupParams.bind(this)}
+						>
+						</ wc-radio>
+					</div>
+				`)}
+			</div>
+		`
+	}
+
+	closeIcon() {
+		return html`
+			<div class='close'>
+				<i class="material-icons">arrow_forward_ios</i>
+			</div>
 		`
 	}
 
 	overlay() {
 		return html`<div class='overlay' @click=${this.handleClickOverlay}></div>`
+	}
+
+	icons() {
+		return html`<link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>`
 	}
 }
 
