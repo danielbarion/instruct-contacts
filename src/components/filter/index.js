@@ -57,7 +57,7 @@ class Filter extends LitElement {
 	 */
 	initializeEvents() {
 		document.addEventListener('toggleFilter', this.toggle.bind(this))
-		document.addEventListener('keydown', this.keyDown)
+		document.addEventListener('keydown', this.keyDown.bind(this))
 	}
 
 	keyDown(event) {
@@ -71,7 +71,10 @@ class Filter extends LitElement {
 				 * key pressed: Enter
 				 * close filter
 				 */
-				this.toggle()
+				if (this.active) {
+					this.toggle()
+				}
+
 				break
 
 			default:
