@@ -73,7 +73,9 @@ class Filter extends LitElement {
 		const { value } = input
 
 		if (this.onFilter) {
-			this.onFilter(value)
+			const [selectedParam] = this.radioGroupParams.filter(item => item.checked)
+
+			this.onFilter(value, selectedParam.id)
 		}
 	}
 

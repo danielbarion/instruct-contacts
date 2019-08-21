@@ -46,14 +46,13 @@ class App extends LitElement {
 		})
 	}
 
-	handleFilter(value) {
+	handleFilter(value, param) {
 		if (value) {
 			let filteredContacts = []
-
-			filteredContacts = this.recursiveFilter(this.untouchedContacts, value)
+			filteredContacts = this.recursiveFilter(this.untouchedContacts, value, param)
 
 			this.contacts = filteredContacts
-		} else {
+	 	} else {
 			this.contacts = JSON.parse(JSON.stringify(this.untouchedContacts))
 		}
 	}
@@ -63,8 +62,10 @@ class App extends LitElement {
 	 * If the data input is an object, the output will be a boolean
 	 * @param {Array | Object} data
 	 * @param {String} value
+	 * @param {String} param
 	 */
-	recursiveFilter(data, value) {
+	recursiveFilter(data, value, param) {
+		console.log(param)
 		if (value && data.length && data.length > 0) {
 			const keys = data.reduce((acc, item) => {
 				const keys = Object.keys(item)
@@ -81,13 +82,15 @@ class App extends LitElement {
 
 			return data.reduce((acc, item) => {
 				keys.forEach(key => {
-					if (typeof item[key] == 'string') {
-						if (item[key] == value || item[key].includes(value)) {
-							acc.push(item)
-						}
-					} else if (typeof item[key] == 'object') {
-						if (this.recursiveFilter(item[key], value)) {
-							acc.push(item)
+					if (param === 'all' || key === param) {
+						if (typeof item[key] == 'string') {
+							if (item[key] == value || item[key].includes(value)) {
+								acc.push(item)
+							}
+						} else if (typeof item[key] == 'object') {
+							if (this.recursiveFilter(item[key], value, param)) {
+								acc.push(item)
+							}
 						}
 					}
 				})
