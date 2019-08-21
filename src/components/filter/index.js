@@ -25,6 +25,8 @@ class Filter extends LitElement {
 
 		this.initializeEvents()
 		this.toggle = this.toggle.bind(this)
+
+		this.toggle() // just for tests
 	}
 
 	disconnectedCallback() {
@@ -69,7 +71,23 @@ class Filter extends LitElement {
 	render() {
 		return html`
 			<div class='root'>
-				<wc-field name='search' label='Search' disableautocomplete .oninput=${this.handleSearch}></ wc-field>
+				<div class='search'>
+					<wc-field name='search' label='Search' disableautocomplete .oninput=${this.handleSearch}></ wc-field>
+				</div>
+				<div class='content'>
+					<div class='radio'>
+						<wc-radio id='all' name='param' label='All'></ wc-radio>
+					</div>
+					<div class='radio'>
+						<wc-radio id='email' name='param' label='Email'></ wc-radio>
+					</div>
+					<div class='radio'>
+						<wc-radio id='phone' name='param' label='Phone'></ wc-radio>
+					</div>
+					<div class='radio'>
+						<wc-radio id='address' name='param' label='Address'></ wc-radio>
+					</div>
+				</div>
 			</div>
 			${this.overlay()}
 		`

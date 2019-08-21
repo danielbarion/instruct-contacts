@@ -1,12 +1,12 @@
 /**
  * Components
  */
-import './components/toast'
 import './components/contact-card'
-import './components/contact-card'
-import './components/top-bar'
-import './components/filter'
 import './components/field'
+import './components/filter'
+import './components/radio'
+import './components/toast'
+import './components/top-bar'
 
 /**
  * Modules

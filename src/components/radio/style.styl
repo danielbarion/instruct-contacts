@@ -1,0 +1,67 @@
+:host
+	*,
+	*:before,
+	*:after
+		box-sizing: border-box;
+
+	.root
+		font-family 'Montserrat', 'Arial', 'Helvetica', sans-serif
+		font-size 14px
+
+		input[type="radio"]
+			display none
+
+			&:checked + label:before
+				border-color #01A4E0
+				animation ripple 0.2s linear forwards
+
+			&:checked + label:after
+				transform scale(1)
+
+		label
+			display flex
+			align-items center
+			height 20px
+			position relative
+			padding 0 (20px + 10px)
+			margin-bottom 0
+			cursor pointer
+			vertical-align bottom
+
+			&:before, &:after
+				position absolute
+				content ''
+				border-radius 50%
+				transition all .3s ease
+				transition-property transform, border-color
+
+			&:before
+				left 0
+				top 0
+				width 20px
+				height 20px
+				border 2px solid #0080B6
+
+			&:after
+				top calc(20px / 2 - 10px / 2)
+				left calc(20px / 2 - 10px / 2)
+				width 10px
+				height 10px
+				transform scale(0)
+				background #01A4E0
+
+
+	/**
+	 * Animation keyframe
+	 */
+	@keyframes ripple {
+		0% {
+			box-shadow 0px 0px 0px 1px rgba(0, 0, 0, 0.0)
+		}
+		50% {
+			box-shadow 0px 0px 0px 15px rgba(0, 0, 0, 0.1)
+		}
+		100% {
+			box-shadow 0px 0px 0px 15px rgba(0, 0, 0, 0)
+		}
+	}

@@ -8,16 +8,12 @@
 		.overlay
 			display block
 
-	wc-field
-		padding-top 35px
-		padding-left 30px
-		padding-right 30px
-		padding-bottom 30px
-
 	.root
 		display grid
-		grid-template-columns auto
+		grid-template-areas 'search'\
+												'container'
 		grid-template-rows 64px auto
+		grid-template-columns auto
 		position fixed
 		z-index 3
 		width 300px
@@ -28,6 +24,20 @@
 		box-shadow 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)
 		right -300px
 		transition transform 300ms ease
+
+		.search
+			grid-area search
+			padding-top 35px
+			padding-left 30px
+			padding-right 30px
+			padding-bottom 30px
+
+		.content
+			grid-area container
+			padding-top 30px
+			padding-left 30px
+			padding-right 30px
+			padding-bottom 30px
 
 	.overlay
 		height 100vh
