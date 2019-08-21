@@ -156,11 +156,18 @@ class App extends LitElement {
 			<wc-top-bar></wc-top-bar>
 			<wc-filter .onFilter=${this.debouncedFilter.bind(this)} filterKeys=${JSON.stringify(this.filterKeys)}></wc-filter>
 			<div class='card-list'>
-			${this.contacts.map(item =>
-				html`<wc-contact-card data=${JSON.stringify(item)}></wc-contact-card>`)
+			${ this.contacts.length > 0
+				?	this.contacts.map(item =>	html`<wc-contact-card data=${JSON.stringify(item)}></wc-contact-card>`)
+				: this.emptyMessage()
 			}
 			</div>
 		`
+	}
+
+	emptyMessage() {
+		return (this.contacts.length === 0 && this.untouchedContacts.length === 0)
+			? html`<div class='no-contacts'>Nenhum contato carregado</div>`
+			: html`<div class='no-contacts'>Nenhum contato encontrado</div>`
 	}
 }
 
