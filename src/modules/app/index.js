@@ -42,7 +42,6 @@ class App extends LitElement {
 	getContacts() {
 		fetcher({ url: 'https://jsonplaceholder.typicode.com/users' })
 		.then(response => {
-			console.log(response)
 			this.contacts = response
 			// Remove memory reference when save initial data into a var
 			this.untouchedContacts = JSON.parse(JSON.stringify(response))
