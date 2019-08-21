@@ -47,6 +47,7 @@ class Filter extends LitElement {
 
 	disconnectedCallback() {
 		document.removeEventListener('toggleFilter', this.toggle)
+		document.removeEventListener('keydown', this.keyDown)
 
 		super.disconnectedCallback()
 	}
@@ -56,6 +57,26 @@ class Filter extends LitElement {
 	 */
 	initializeEvents() {
 		document.addEventListener('toggleFilter', this.toggle.bind(this))
+		document.addEventListener('keydown', this.keyDown)
+	}
+
+	keyDown(event) {
+		const key = event.which
+
+		switch (key) {
+			// https://css-tricks.com/snippets/javascript/javascript-keycodes/
+
+			case 13:
+				/**
+				 * key pressed: Enter
+				 * close filter
+				 */
+				this.toggle()
+				break
+
+			default:
+				break
+		}
 	}
 
 	radioGroupParamsGenerate() {
