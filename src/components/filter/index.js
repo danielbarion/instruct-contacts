@@ -19,6 +19,7 @@ class Filter extends LitElement {
 		this.onFilter = null
 		this.filterKeys = []
 
+		this.filterValue = ''
 		this.fixedKeys = [
 			{ id: 'all', name: 'params', label: 'All', checked: true }
 		]
@@ -97,12 +98,21 @@ class Filter extends LitElement {
 
 	handleClickRadioGroupParams(radio) {
 		this.radioGroupParams.forEach(item => item.checked = item.id == radio.id)
+
+		if (this.onFilter && this.filterValue) {
+			const [selectedParam] = this.radioGroupParams.filter(item => item.checked)
+
+			this.onFilter(this.filterValue, selectedParam.id)
+		}
+
 		this.requestUpdate()
 	}
 
 	handleSearch(event) {
 		const [input] = event.path
 		const { value } = input
+
+		this.filterValue = value
 
 		if (this.onFilter) {
 			const [selectedParam] = this.radioGroupParams.filter(item => item.checked)
