@@ -28,7 +28,7 @@ class Filter extends LitElement {
 	}
 
 	disconnectedCallback() {
-		document.removeEventListener('toggleFilter')
+		document.removeEventListener('toggleFilter', this.toggle)
 
 		super.disconnectedCallback()
 	}

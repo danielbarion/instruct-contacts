@@ -33,11 +33,6 @@ class App extends LitElement {
 		this.getContacts()
 	}
 
-	disconnectedCallback() {
-		document.removeEventListener('filterContacts')
-		super.disconnectedCallback()
-	}
-
 	/**
 	 * funcs
 	 */

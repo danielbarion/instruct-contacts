@@ -18,14 +18,6 @@ class TopBar extends LitElement {
 		super()
 	}
 
-	connectedCallback() {
-		super.connectedCallback()
-	}
-
-	attributeChangedCallback() {
-		super.attributeChangedCallback()
-	}
-
 	/**
 	 * funcs
 	 */
@@ -36,7 +28,7 @@ class TopBar extends LitElement {
 
 		setTimeout(() => {
 			icon.classList.remove('animationPulse')
-		}, 600)
+		}, 200)
 
 		document.dispatchEvent(new CustomEvent('toggleFilter'))
 	}
