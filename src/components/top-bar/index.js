@@ -21,15 +21,7 @@ class TopBar extends LitElement {
 	/**
 	 * funcs
 	 */
-	handleClickFilter(event) {
-		const [icon] = event.path
-
-		icon.classList.add('animationPulse')
-
-		setTimeout(() => {
-			icon.classList.remove('animationPulse')
-		}, 200)
-
+	handleClickFilter() {
 		document.dispatchEvent(new CustomEvent('toggleFilter'))
 	}
 
