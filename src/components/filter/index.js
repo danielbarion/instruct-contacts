@@ -77,8 +77,6 @@ class Filter extends LitElement {
 			default:
 				break
 		}
-
-		alert(event)
 	}
 
 	radioGroupParamsGenerate() {
