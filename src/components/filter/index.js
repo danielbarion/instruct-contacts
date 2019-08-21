@@ -17,6 +17,13 @@ class Filter extends LitElement {
 		this.active = false
 		this.onFilter = null
 
+		this.radioGroupParams = [
+			{ id: 'all', name:'params', label: 'All', checked: true },
+			{ id: 'email', name: 'params', label: 'Email', checked: false },
+			{ id: 'phone', name: 'params', label: 'Phone', checked: false },
+			{ id: 'address', name: 'params', label: 'Address', checked: false }
+		]
+
 		this.handleSearch = this.handleSearch.bind(this)
 	}
 
@@ -56,6 +63,11 @@ class Filter extends LitElement {
 		this.toggle()
 	}
 
+	handleClickRadioGroupParams(radio) {
+		this.radioGroupParams.forEach(item => item.checked = item.id == radio.id)
+		this.requestUpdate()
+	}
+
 	handleSearch(event) {
 		const [input] = event.path
 		const { value } = input
@@ -75,18 +87,20 @@ class Filter extends LitElement {
 					<wc-field name='search' label='Search' disableautocomplete .oninput=${this.handleSearch}></ wc-field>
 				</div>
 				<div class='content'>
-					<div class='radio'>
-						<wc-radio id='all' name='param' label='All'></ wc-radio>
-					</div>
-					<div class='radio'>
-						<wc-radio id='email' name='param' label='Email'></ wc-radio>
-					</div>
-					<div class='radio'>
-						<wc-radio id='phone' name='param' label='Phone'></ wc-radio>
-					</div>
-					<div class='radio'>
-						<wc-radio id='address' name='param' label='Address'></ wc-radio>
-					</div>
+					${
+						this.radioGroupParams.map(radio => html`
+							<div class='radio'>
+								<wc-radio
+									id=${radio.id}
+									name=${radio.name}
+									label=${radio.label}
+									?checked=${radio.checked}
+									.click=${this.handleClickRadioGroupParams.bind(this)}
+								>
+								</ wc-radio>
+							</div>
+						`)
+					}
 				</div>
 			</div>
 			${this.overlay()}

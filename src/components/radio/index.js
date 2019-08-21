@@ -7,6 +7,7 @@ class Radio extends LitElement {
 		name: { type: String },
 		label: { type: String },
 		checked: { type: Boolean },
+		click: { type: Object }
 	}}
 
 	static get styles() {
@@ -20,28 +21,19 @@ class Radio extends LitElement {
 		this.name = ''
 		this.label = ''
 		this.checked = false
+		this.click = null
 	}
 
 	connectedCallback() {
 		super.connectedCallback()
-
-		// setTimeout(() => this.handleChange())
 	}
 
 	/**
 	 * funcs
 	 */
-	// handleChange() {
-	// 	const input = this.shadowRoot.querySelector('input')
-
-	// 	if (input.value) {
-	// 		input.setAttribute('hasvalue', '')
-	// 	} else {
-	// 		input.removeAttribute('hasvalue')
-	// 	}
-
-	// 	this.value = input.value
-	// }
+	handleClick() {
+		this.click(this)
+	}
 
 	/**
 	 * HTML
@@ -53,7 +45,9 @@ class Radio extends LitElement {
 					? html`<input id=${this.id} type='radio' name=${this.name} checked>`
 						: html`<input id=${this.id} type='radio' name=${this.name}>`
 				}
-				<label for=${this.id}>${this.label ? this.label : ''}</label>
+				<label for=${this.id} @click=${this.handleClick}>
+					${this.label ? this.label : ''}
+				</label>
 			</div>
 		`
 	}
