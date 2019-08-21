@@ -75,6 +75,7 @@ class Filter extends LitElement {
 				break
 
 			default:
+				alert(key)
 				break
 		}
 	}
