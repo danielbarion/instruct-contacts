@@ -20,10 +20,12 @@ class App extends LitElement {
 		this.contacts = []
 		this.untouchedContacts = []
 
+		this.filterKeys = []
+
 		/**
 		 * The Filter is working fine without debounce but it's
 		 * a good practice add a debounce function to prevent
-		 * unnecessary resource consumption
+		 * unnecessary resource consumption (like memory leak)
 		 */
 		this.debouncedFilter = debounce(this.handleFilter, 500)
 	}
@@ -42,7 +44,10 @@ class App extends LitElement {
 		.then(response => {
 			console.log(response)
 			this.contacts = response
+			// Remove memory reference when save initial data into a var
 			this.untouchedContacts = JSON.parse(JSON.stringify(response))
+
+			this.getFilterKeys(response)
 		})
 	}
 
@@ -115,6 +120,31 @@ class App extends LitElement {
 	}
 
 	/**
+	 * This function return just the first level of object keys.
+	 * Q: Why not recursive ?
+	 * A: To prevent confusion between same keys like 'name'
+	 * attr in a different level.
+	 * @param {*} data
+	 */
+	getFilterKeys(data) {
+		if (data.length && data.length > 0) {
+			const keys = data.reduce((acc, item) => {
+				const keys = Object.keys(item)
+				if (keys.length > 0) {
+					keys.forEach(key => {
+						if (acc.indexOf(key) === -1) {
+							acc.push(key)
+						}
+					})
+				}
+				return acc
+			}, [])
+
+			this.filterKeys = keys.filter((data, index, self) => self.indexOf(data) >= index)
+		}
+	}
+
+	/**
 	 * HTML
 	 */
 	render() {
@@ -126,7 +156,7 @@ class App extends LitElement {
 	appRoot() {
 		return html`
 			<wc-top-bar></wc-top-bar>
-			<wc-filter .onFilter=${this.debouncedFilter.bind(this)}></wc-filter>
+			<wc-filter .onFilter=${this.debouncedFilter.bind(this)} filterKeys=${JSON.stringify(this.filterKeys)}></wc-filter>
 			<div class='card-list'>
 			${this.contacts.map(item =>
 				html`<wc-contact-card data=${JSON.stringify(item)}></wc-contact-card>`)

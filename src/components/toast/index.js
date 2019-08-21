@@ -38,7 +38,6 @@ class Toast extends LitElement {
 	 * funcs
 	 */
 	toggle(show) {
-		console.log({show})
 		if (show) {
 			this.setAttribute('active', '')
 			this.initializeTimeout()

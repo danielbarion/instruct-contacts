@@ -5,6 +5,7 @@ class Filter extends LitElement {
 	static get properties() {	return {
 		active: { type: Boolean },
 		onFilter: { type: Object },
+		filterKeys: { type: Array }
 	}}
 
 	static get styles() {
@@ -16,13 +17,12 @@ class Filter extends LitElement {
 
 		this.active = false
 		this.onFilter = null
+		this.filterKeys = []
 
-		this.radioGroupParams = [
-			{ id: 'all', name:'params', label: 'All', checked: true },
-			{ id: 'email', name: 'params', label: 'Email', checked: false },
-			{ id: 'phone', name: 'params', label: 'Phone', checked: false },
-			{ id: 'address', name: 'params', label: 'Address', checked: false }
+		this.fixedKeys = [
+			{ id: 'all', name: 'params', label: 'All', checked: true }
 		]
+		this.radioGroupParams = []
 
 		this.handleSearch = this.handleSearch.bind(this)
 	}
@@ -31,9 +31,19 @@ class Filter extends LitElement {
 		super.connectedCallback()
 
 		this.initializeEvents()
+		this.radioGroupParamsGenerate()
+
 		this.toggle = this.toggle.bind(this)
 
 		this.toggle() // just for tests
+	}
+
+	attributeChangedCallback(name, oldValue, newValue) {
+		super.attributeChangedCallback(name, oldValue, newValue)
+
+		if (this.filterKeys.length > 0) {
+			this.radioGroupParamsGenerate()
+		}
 	}
 
 	disconnectedCallback() {
@@ -47,6 +57,23 @@ class Filter extends LitElement {
 	 */
 	initializeEvents() {
 		document.addEventListener('toggleFilter', this.toggle.bind(this))
+	}
+
+	radioGroupParamsGenerate() {
+		const dinamicKeys = this.filterKeys.reduce((acc, item) => {
+			const key = {
+				id: item,
+				name: 'params',
+				label: item.charAt(0).toUpperCase() + item.slice(1),
+				checked: false
+			}
+
+			acc.push(key)
+
+			return acc
+		}, [])
+
+		this.radioGroupParams = Object.assign([], dinamicKeys, this.fixedKeys)
 	}
 
 	toggle() {
