@@ -35,8 +35,6 @@ class Filter extends LitElement {
 		this.radioGroupParamsGenerate()
 
 		this.toggle = this.toggle.bind(this)
-
-		this.toggle() // just for tests
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {
@@ -172,7 +170,7 @@ class Filter extends LitElement {
 	closeIcon() {
 		return html`
 			<div class='close'>
-				<i class="material-icons">arrow_forward_ios</i>
+				<i class="material-icons" @click=${this.toggle}>arrow_forward_ios</i>
 			</div>
 		`
 	}
