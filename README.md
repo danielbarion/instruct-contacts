@@ -2,7 +2,7 @@
 Demo: [https://friendly-bose-005e60.netlify.com/](https://friendly-bose-005e60.netlify.com/)
 
 Recommended OS: `Linux`, `OS X`.
-You can test this app in `Windows` but you need install linux sub system to improve compatility.
+You can test this app in `Windows` but you maybe need install `linux sub system` or use `git bash` to improve compatility and execute scripts.
 
 ### Informations
 This project use [web components](https://developer.mozilla.org/pt-BR/docs/Web/Web_Components) concept to have a high performance like native elements.
