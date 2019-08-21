@@ -70,7 +70,6 @@ class App extends LitElement {
 	 * @param {String} param
 	 */
 	recursiveFilter(data, value, param) {
-		console.log(param)
 		if (value && data.length && data.length > 0) {
 			const keys = data.reduce((acc, item) => {
 				const keys = Object.keys(item)
