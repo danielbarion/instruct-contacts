@@ -41,6 +41,11 @@ class Filter extends LitElement {
 	attributeChangedCallback(name, oldValue, newValue) {
 		super.attributeChangedCallback(name, oldValue, newValue)
 
+		/**
+		 * this validation is very generic and
+		 * should be refactored to check attribute
+		 * name, old and new value.
+		 */
 		if (this.filterKeys.length > 0) {
 			this.radioGroupParamsGenerate()
 		}
