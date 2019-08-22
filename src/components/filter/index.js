@@ -126,7 +126,9 @@ class Filter extends LitElement {
 	}
 
 	handleSearch(event) {
-		const [input] = event.path
+		const path = event.path || (event.composedPath && event.composedPath())
+
+		const [input] = path
 		const { value } = input
 
 		this.filterValue = value

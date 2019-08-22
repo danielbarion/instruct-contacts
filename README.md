@@ -6,9 +6,6 @@ Demo: [https://friendly-bose-005e60.netlify.com/](https://friendly-bose-005e60.n
 Recommended OS: `Linux`, `OS X`.
 You can test this app in `Windows` but you maybe need install `linux sub system` or use `git bash` to improve compatility and execute scripts.
 
-Recommended Browser: `Google Chrome`.
-Please use GC to test and run the app.
-
 ### Informations
 This project use [web components](https://developer.mozilla.org/pt-BR/docs/Web/Web_Components) concept to have a high performance like native elements.
 All components are build with `HTML`, `CSS` (Stylus), `Javascript`.

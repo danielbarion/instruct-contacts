@@ -20,7 +20,9 @@ class ContactCard extends LitElement {
 	 * funcs
 	 */
 	switchCard(event) {
-		const [finalElement] = event.path
+		const path = event.path || (event.composedPath && event.composedPath())
+
+		const [finalElement] = path
 
 		if (finalElement && finalElement.classList.contains('map')) {
 			return
