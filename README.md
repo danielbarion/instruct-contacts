@@ -57,3 +57,16 @@ yarn build
 ```
 This command will run production steps (minify, uglify and no source map) and will not serve the app.
 To test you can serve the app as your want in your server or use `serve` like the stand alone flow.
+
+#### Tests
+First, add `Jasmine` to your enviroment:
+
+```bash
+npm i -g jasmine
+```
+
+Now you just need run the command below:
+
+```
+jasmine --config=src/tests/index.js
+```
