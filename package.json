@@ -5,7 +5,8 @@
   "scripts": {
     "start": "rm -rf build && mkdir build && node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.dev.js --watch",
     "start-stand-alone": "rm -rf build && mkdir build && node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.standalone.js --watch",
-    "build": "rm -rf build && mkdir build && node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.prod.js"
+    "build": "rm -rf build && mkdir build && node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.prod.js",
+    "test": "node src/tests/index.js"
   },
   "author": "Daniel Barion",
   "license": "MIT",

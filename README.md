@@ -20,6 +20,17 @@ Behind the scenes we have a open source project [Lit-Element](https://lit-elemen
 
 
 ### Available Scripts
+Before anything you need install all dependencies:
+
+- Yarn
+```bash
+yarn
+```
+- npm
+```bash
+npm install
+```
+
 #### Development
 ```bash
 yarn start
@@ -68,5 +79,5 @@ npm i -g jasmine
 Now you just need run the command below:
 
 ```
-jasmine --config=src/tests/index.js
+yarn test
 ```
