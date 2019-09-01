@@ -70,7 +70,7 @@ This command will run production steps (minify, uglify and no source map) and wi
 To test you can serve the app as your want in your server or use `serve` like the stand alone flow.
 
 #### Tests
-First, add `Jasmine` to your enviroment:
+First, add `Jasmine` to your enviroment, I strongly recommend add jasmine global:
 
 ```bash
 npm i -g jasmine
