@@ -5,7 +5,8 @@
   "scripts": {
     "start": "rm -rf build && mkdir build && node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.dev.js --watch",
     "start-stand-alone": "rm -rf build && mkdir build && node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.standalone.js --watch",
-    "build": "rm -rf build && mkdir build && node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.prod.js"
+    "build": "rm -rf build && mkdir build && node --max_old_space_size=2048 ./node_modules/rollup/dist/bin/rollup -c rollup.config.prod.js",
+    "test": "jasmine --config=src/tests/jasmine.json"
   },
   "author": "Daniel Barion",
   "license": "MIT",
@@ -37,6 +38,7 @@
     "rollup-plugin-uglify": "^6.0.2"
   },
   "dependencies": {
+    "jasmine": "^3.4.0",
     "lit-element": "^2.2.0",
     "lit-html": "^1.1.0"
   }
