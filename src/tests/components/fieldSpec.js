@@ -1,3 +1,11 @@
-describe('Testing field toggle', () => {
-	console.log('Start testing');
-})
+describe("A suite is just a function", function () {
+	var a;
+
+	it("and so is a spec", function () {
+		a = true;
+
+		expect(a).toBe(true);
+
+		console.log('custom spec called')
+	});
+});
