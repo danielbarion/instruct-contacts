@@ -2,14 +2,6 @@ import { LitElement, html, css, unsafeCSS, svg } from 'lit-element'
 import style from './style.styl'
 
 class TopBar extends LitElement {
-	static get properties() {	return {
-		text: { type: String },
-		active: { type: Boolean },
-		positionX: { type: String },
-		positionY: { type: String },
-		timeout: { type: Number }
-	}}
-
 	static get styles() {
 		return [css`${unsafeCSS(style)}`]
 	}
